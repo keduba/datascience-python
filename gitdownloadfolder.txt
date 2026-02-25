@@ -1,0 +1,10 @@
+for url in $(curl -s https://api.github.com/repos/<user>/<repository>/contents/
+<path-to-folder> | jq -r '.[] | select(.type=="file") | .download_url'); do
+  wget $url
+done
+
+https://api.github.com/repositories/49194972/contents/assets/data
+
+for url in $(curl -s https://api.github.com/repositories/49194972/contents/assets/data | jq -r '.[] | select(.type=="file") | .download_url'); do
+  curl -O $url
+done
